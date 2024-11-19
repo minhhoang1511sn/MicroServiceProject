@@ -1,19 +1,22 @@
-package com.josHoangDev.bookservice.command.data;
+package com.josHoangDev.bookservice.command.command;
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class UpdateBookCommand {
 
-@Entity
-@Table(name = "books")
-public class Book {
-    @Id
+    @TargetAggregateIdentifier
     private String bookId;
     private String bookName;
     private String author;
     private Boolean isReady;
 
+    public UpdateBookCommand(String bookId, String bookName, String author, Boolean isReady) {
+        super();
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.author = author;
+        this.isReady = isReady;
+    }
     public String getBookId() {
         return bookId;
     }
@@ -40,6 +43,6 @@ public class Book {
         this.isReady = isReady;
     }
     public void setBookName(String bookName) {
-            this.bookName = bookName;
+        this.bookName = bookName;
     }
 }

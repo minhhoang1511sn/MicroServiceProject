@@ -1,14 +1,6 @@
-package com.josHoangDev.bookservice.command.data;
+package com.josHoangDev.bookservice.command.events;
 
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "books")
-public class Book {
-    @Id
+public class BookUpdatedEvent {
     private String bookId;
     private String bookName;
     private String author;
@@ -40,6 +32,7 @@ public class Book {
         this.isReady = isReady;
     }
     public void setBookName(String bookName) {
-            this.bookName = bookName;
+        this.bookName = bookName;
     }
+
 }
