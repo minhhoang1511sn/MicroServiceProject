@@ -1,0 +1,26 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: bookservice
+          uri: http://localhost:9001
+          predicates:
+            - Path=/api/v1/books/**
+        - id: employeeService
+          uri: http://localhost:9002
+          predicates:
+            - Path=/api/v1/employees/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+  web:
+    cors:
+      mappings:
+        - path-pattern: "/**"          # Áp dụng cho tất cả các đường dẫn
+          allowed-origins: "*"         # Cho phép tất cả các nguồn
+          allowed-methods: "*"         # Cho phép tất cả các phương thức
+          allowed-headers: "*"
