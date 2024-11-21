@@ -3,7 +3,6 @@ package com.josHoangDev.bookservice.query.controller;
 import com.josHoangDev.bookservice.query.model.BookResponeModel;
 import com.josHoangDev.bookservice.query.queries.GetAllBooksQuery;
 import com.josHoangDev.bookservice.query.queries.GetBookQuery;
-import org.axonframework.messaging.responsetypes.ResponseType;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.beans.factory.annotation.Autowired;
