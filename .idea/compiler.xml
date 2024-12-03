@@ -10,9 +10,12 @@
         <module name="employeeService" />
         <module name="discoveryServer" />
         <module name="bookService" />
+        <module name="notificationservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="borrowingservice" target="11" />
+      <module name="commonservice" target="11" />
       <module name="employeeService.main" target="17" />
       <module name="employeeService.test" target="17" />
     </bytecodeTargetLevel>
@@ -23,6 +26,7 @@
       <module name="bookService" options="-parameters" />
       <module name="discoveryServer" options="-parameters" />
       <module name="employeeService" options="-parameters" />
+      <module name="notificationservice" options="-parameters" />
     </option>
   </component>
 </project>
