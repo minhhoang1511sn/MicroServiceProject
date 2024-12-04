@@ -54,7 +54,11 @@
 			<artifactId>axon-spring-boot-starter</artifactId>
 			<version>4.5.9</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.josHoangDev</groupId>
+			<artifactId>commonservice</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- Validation Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

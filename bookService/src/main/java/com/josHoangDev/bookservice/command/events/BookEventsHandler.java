@@ -2,6 +2,7 @@ package com.josHoangDev.bookservice.command.events;
 
 import com.josHoangDev.bookservice.command.data.Book;
 import com.josHoangDev.bookservice.command.data.BookRepository;
+import com.josHoangDev.commonservice.events.BookUpdatedStatusEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,12 @@ public class BookEventsHandler {
     public void on(BookDeletedEvent event) {
 
         bookRepository.deleteById(event.getBookId());
+    }
+    @EventHandler
+    public void on(BookUpdatedStatusEvent event){
+        Book book = bookRepository.getById(event.getBookId());
+        book.setIsReady(event.getIsReady());
+        bookRepository.save(book);
+
     }
 }

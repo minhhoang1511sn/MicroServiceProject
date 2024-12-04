@@ -8,14 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="apigateway" />
         <module name="employeeService" />
+        <module name="commonservice" />
+        <module name="bookService" />
         <module name="borrowingservice" />
         <module name="discoveryServer" />
-        <module name="bookService" />
         <module name="notificationservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="commonservice" target="11" />
       <module name="employeeService.main" target="17" />
       <module name="employeeService.test" target="17" />
     </bytecodeTargetLevel>
@@ -25,6 +25,7 @@
       <module name="apigateway" options="-parameters" />
       <module name="bookService" options="-parameters" />
       <module name="borrowingservice" options="-parameters" />
+      <module name="commonservice" options="-parameters" />
       <module name="discoveryServer" options="-parameters" />
       <module name="employeeService" options="-parameters" />
       <module name="notificationservice" options="-parameters" />

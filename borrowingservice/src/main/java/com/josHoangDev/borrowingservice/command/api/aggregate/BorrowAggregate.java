@@ -1,7 +1,9 @@
 package com.josHoangDev.borrowingservice.command.api.aggregate;
 
 import com.josHoangDev.borrowingservice.command.api.command.CreateBorrowCommand;
+import com.josHoangDev.borrowingservice.command.api.command.DeleteBorrowCommand;
 import com.josHoangDev.borrowingservice.command.api.events.BorrowCreatedEvent;
+import com.josHoangDev.borrowingservice.command.api.events.BorrowDeletedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -31,11 +33,22 @@ public class BorrowAggregate {
         BeanUtils.copyProperties(command, event);
         AggregateLifecycle.apply(event);
     }
+    @CommandHandler
+    public void handle(DeleteBorrowCommand command) {
+        BorrowDeletedEvent event = new BorrowDeletedEvent();
+        BeanUtils.copyProperties(command, event);
+        AggregateLifecycle.apply(event);
+    }
     @EventSourcingHandler
     public void on(BorrowCreatedEvent event) {
         this.id = event.getId();
         this.bookId = event.getBookId();
         this.employeeId = event.getEmployeeId();
         this.borrowDate = event.getBorrowDate();
+    }
+    @EventSourcingHandler
+    public void on(BorrowDeletedEvent event) {
+        this.id = event.getId();
+
     }
 }
