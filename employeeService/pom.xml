@@ -108,6 +108,11 @@
 			<version>2.8.6</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.josHoangDev</groupId>
+			<artifactId>commonservice</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 <!--		-->
 	</dependencies>
 	<dependencyManagement>

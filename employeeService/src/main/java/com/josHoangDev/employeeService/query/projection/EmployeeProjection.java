@@ -1,5 +1,7 @@
 package com.josHoangDev.employeeService.query.projection;
 
+import com.josHoangDev.commonservice.model.EmployeeResponseCommonModel;
+import com.josHoangDev.commonservice.query.GetDetailsEmployeeQuery;
 import com.josHoangDev.employeeService.command.data.Employee;
 import com.josHoangDev.employeeService.command.data.EmployeeRepository;
 import com.josHoangDev.employeeService.query.model.EmployeeResponeModel;
@@ -36,5 +38,14 @@ public class EmployeeProjection {
             bookResponeModels.add(bookResponeModel);
         });
     return bookResponeModels;
+    }
+
+    @QueryHandler
+    public EmployeeResponseCommonModel handle(GetDetailsEmployeeQuery getDetailsEmployeeQuery) {
+        EmployeeResponseCommonModel model = new EmployeeResponseCommonModel();
+        Employee employee = employeeRepository.getById(getDetailsEmployeeQuery.getEmployeeId());
+        BeanUtils.copyProperties(employee, model);
+
+        return model;
     }
 }

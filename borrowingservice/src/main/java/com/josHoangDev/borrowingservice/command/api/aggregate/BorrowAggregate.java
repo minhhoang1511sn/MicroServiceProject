@@ -2,8 +2,12 @@ package com.josHoangDev.borrowingservice.command.api.aggregate;
 
 import com.josHoangDev.borrowingservice.command.api.command.CreateBorrowCommand;
 import com.josHoangDev.borrowingservice.command.api.command.DeleteBorrowCommand;
+import com.josHoangDev.borrowingservice.command.api.command.SendMessageCommand;
+import com.josHoangDev.borrowingservice.command.api.command.UpdateBookReturnCommand;
 import com.josHoangDev.borrowingservice.command.api.events.BorrowCreatedEvent;
 import com.josHoangDev.borrowingservice.command.api.events.BorrowDeletedEvent;
+import com.josHoangDev.borrowingservice.command.api.events.BorrowSendMessageEvent;
+import com.josHoangDev.borrowingservice.command.api.events.BorrowingUpdateBookReturnEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -34,8 +38,21 @@ public class BorrowAggregate {
         AggregateLifecycle.apply(event);
     }
     @CommandHandler
+    public void handle(UpdateBookReturnCommand command) {
+        BorrowingUpdateBookReturnEvent event = new BorrowingUpdateBookReturnEvent();
+        BeanUtils.copyProperties(command, event);
+        AggregateLifecycle.apply(event);
+    }
+
+    @CommandHandler
     public void handle(DeleteBorrowCommand command) {
         BorrowDeletedEvent event = new BorrowDeletedEvent();
+        BeanUtils.copyProperties(command, event);
+        AggregateLifecycle.apply(event);
+    }
+    @CommandHandler
+    public void handle(SendMessageCommand command) {
+        BorrowSendMessageEvent event = new BorrowSendMessageEvent();
         BeanUtils.copyProperties(command, event);
         AggregateLifecycle.apply(event);
     }
@@ -50,5 +67,18 @@ public class BorrowAggregate {
     public void on(BorrowDeletedEvent event) {
         this.id = event.getId();
 
+    }
+    @EventSourcingHandler
+    public void on(BorrowingUpdateBookReturnEvent event) {
+
+        this.returnDate = event.getReturnDate();
+        this.bookId = event.getBookId();
+        this.employeeId = event.getEmployee();
+    }
+    @EventSourcingHandler
+    public void on(BorrowSendMessageEvent event) {
+        this.id = event.getId();
+        this.message = event.getMessage();
+        this.employeeId = event.getEmployeeId();
     }
 }

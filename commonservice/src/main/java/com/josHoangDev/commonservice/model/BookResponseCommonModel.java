@@ -1,6 +1,6 @@
 package com.josHoangDev.commonservice.model;
 
-public class BookResponeCommonModel {
+public class BookResponseCommonModel {
     private String bookId;
     private String name;
     private String author;
