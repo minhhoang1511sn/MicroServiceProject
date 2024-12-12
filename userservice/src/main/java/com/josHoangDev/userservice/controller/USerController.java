@@ -2,7 +2,7 @@ package com.josHoangDev.userservice.controller;
 
 import com.josHoangDev.userservice.data.User;
 import com.josHoangDev.userservice.model.UserDTO;
-import com.josHoangDev.userservice.service.USerService;
+import com.josHoangDev.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +10,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
-public class USerController {
+public class UserController {
     @Autowired
-    private USerService userService;
+    private UserService userService;
 
 
     @GetMapping("/listUser")

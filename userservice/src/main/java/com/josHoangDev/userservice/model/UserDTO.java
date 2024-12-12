@@ -8,6 +8,17 @@ public class UserDTO {
     private String token;
     private String refreshtoken;
 
+    public UserDTO(){}
+
+    public UserDTO(long l, String mail, String password, String employeeID, String token, String refresh) {
+        this.id = l;
+        this.username = mail;
+        this.password = password;
+        this.employeeId = employeeID;
+        this.token = token;
+        this.refreshtoken = refresh;
+    }
+
     public String getRefreshtoken() {
         return refreshtoken;
     }
